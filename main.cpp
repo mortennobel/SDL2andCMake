@@ -30,10 +30,14 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    auto glContext = SDL_GL_CreateContext(window);
+
     std::cout << glGetString(GL_VERSION)<<std::endl;
     // The window is open: enter program loop (see SDL_PollEvent)
 
     SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example
+
+    SDL_GL_DeleteContext(glContext);
 
     // Close and destroy the window
     SDL_DestroyWindow(window);
