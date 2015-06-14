@@ -33,6 +33,7 @@ int main(int argc, char* argv[]) {
     auto glContext = SDL_GL_CreateContext(window);
 
     std::cout << glGetString(GL_VERSION)<<std::endl;
+    std::cout << "OpenGL version "<<glGetString(GL_VERSION)<<"."<<std::endl;
     // The window is open: enter program loop (see SDL_PollEvent)
 
     SDL_Delay(3000);  // Pause execution for 3000 milliseconds, for example

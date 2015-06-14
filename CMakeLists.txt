@@ -13,14 +13,14 @@ find_package(SDL2 REQUIRED)
 #########################################################
 # FIND OPENGL
 #########################################################
+include_directories(${SDL2_INCLUDE_DIR})
 IF(APPLE)
    INCLUDE_DIRECTORIES ( /System/Library/Frameworks )
    FIND_LIBRARY(OpenGL_LIBRARY OpenGL )
-   MARK_AS_ADVANCED (OpenGL_LIBRARY)
-   SET(EXTRA_LIBS ${OpenGL_LIBRARY})
+ELSE(TRUE)
+   find_package(OpenGL REQUIRED)
+   include_directories(${OpenGL_INCLUDE_DIRS})
 ENDIF (APPLE)
 
-include_directories(${SDL2_INCLUDE_DIR})
-
-target_link_libraries(${PROJECT_NAME}  ${SDL2_LIBRARY} ${EXTRA_LIBS})
+target_link_libraries(${PROJECT_NAME}  ${OPENGL_LIBRARY} ${SDL2_LIBRARY})
 
